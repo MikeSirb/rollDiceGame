@@ -17,6 +17,9 @@ const dice = document.querySelector(".dice");
 
 /* === VARIABLEN-PROGRAMM === */
 let scores, currentScore, startScore, activePlayer, win;
+let scoreActive = document.querySelector(`#score--${activePlayer}`);
+let playerActiveEl = document.querySelector(`.player--${activePlayer}`);
+let playerEl = document.querySelector(`#name--${activePlayer}`);
 
 /* === START-KONDITIONEN */
 
@@ -43,13 +46,13 @@ const startCondition = function () {
   currentScore0.textContent = currentScore;
   currentScore1.textContent = currentScore;
   dice.classList.add("hidden");
+
+  scoreActive = document.querySelector(`#score--${activePlayer}`);
+  playerActiveEl = document.querySelector(`.player--${activePlayer}`);
+  playerEl = document.querySelector(`#name--${activePlayer}`);
 };
 
 startCondition();
-
-let scoreActive = document.querySelector(`#score--${activePlayer}`);
-let playerActiveEl = document.querySelector(`.player--${activePlayer}`);
-let playerEl = document.querySelector(`#name--${activePlayer}`);
 
 /* === ZUSATZ-FUNKTIONEN === */
 
