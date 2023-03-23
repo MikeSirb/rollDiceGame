@@ -18,10 +18,21 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   color: #333;
-  background-image: linear-gradient(90deg, #cc9292 40%, rgb(111, 132, 190) 90%);
+  background-image: linear-gradient(90deg, #cc9292 35%, rgb(111, 132, 190) 90%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 0;
+}
+
+body > h1 {
+  position: absolute;
+  top: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin: 0;
 }
 
 .btn {
@@ -36,8 +47,6 @@ body {
   font-weight: 400;
 
   border: none;
-  background: none;
-  background-color: #fff;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 50rem;
@@ -47,19 +56,90 @@ body {
   transition: all 0.5s;
 }
 
+.btn--info {
+  min-height: 6rem;
+  top: -8rem;
+  border-radius: 0.5rem;
+  transform: translateX(0);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--close {
+  background-color: rgb(51, 51, 51, 0.3);
+  bottom: 0;
+  margin-bottom: 2rem;
+}
+
+.blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(198, 116, 116, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* === MODAL-WINDOWS === */
+
+.modal--window ul {
+  padding-left: 4rem;
+}
+
+.modal--window {
+  position: absolute;
+  top: 22.5%;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+
+  font-size: 1.75rem;
+  height: fit-content;
+  width: 75rem;
+  background-color: rgba(255, 255, 255, 0.93);
+  border-radius: 2rem;
+  box-shadow: 0 0 3rem 2rem rgba(2, 2, 2, 0.5);
+  padding-bottom: 8rem;
+  animation-duration: 0.5s;
+}
+
+.modal--window h2 {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.modal--window li {
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+}
+
+#win-screenshot {
+  position: absolute;
+  right: 50px;
+  bottom: 8rem;
+}
+
+#mike {
+  display: block;
+  float: right;
+  height: 30rem;
+  width: 22rem;
+  padding-right: 2rem;
+}
+
 /* === LAYOUT === */
 
 main {
-  position: relative;
   height: 60rem;
   width: 100rem;
-  background-color: rgb(140, 179, 213, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(200px);
   filter: blur();
   border-radius: 1.5rem;
   box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.25);
-  overflow: hidden;
   display: flex;
+  z-index: 0;
 }
 
 .player {
@@ -89,7 +169,7 @@ main {
 }
 
 .player--active {
-  background-color: rgba(236, 240, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .player--active .name {
@@ -131,22 +211,61 @@ main {
   margin-right: 0.7rem;
 }
 
+.btn--limit {
+  transform: translateX(-50%);
+  min-width: 5rem;
+}
+
+.btn--rules {
+  left: 0;
+  color: rgb(90, 90, 214);
+  font-weight: 700;
+  border: 2px solid rgba(90, 90, 214, 0.4);
+}
+
+#limit {
+  font-size: 2.5rem;
+  width: fit-content;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  width: 7rem;
+}
+
+.btn--about {
+  width: max-content;
+  margin-left: 31rem;
+  color: rgb(151, 91, 91);
+  font-weight: 700;
+  border: 2px solid rgba(151, 91, 91, 0.4);
+  transition: none;
+}
+
 .btn--new {
   top: 4rem;
 }
 
 .btn--roll {
-  top: 39rem;
+  bottom: 16rem;
 }
 
 .btn--hold {
-  top: 46.1rem;
+  bottom: 9rem;
 }
 
 .btn:active {
   transform: translate(-50%, 10%);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
   transition: all 0.5s;
+}
+
+.btn--info:active {
+  transform: translate(0%, 10%);
+}
+
+.btn--limit:active {
+  transform: translate(-50%, 0%);
 }
 
 .btn:focus {
@@ -173,4 +292,59 @@ main {
 
 .hidden {
   display: none;
+}
+
+.winner {
+  background-image: url(winner-gif-1.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 1);
+  background-size: cover;
+}
+
+/* === MEDIA-QUERIES === */
+
+@media (max-height: 850px) {
+  main {
+    height: 55rem;
+    margin-top: 10rem;
+  }
+}
+
+@media (max-height: 750px) {
+  main {
+    height: 50rem;
+  }
+}
+
+@media (max-height: 650px) {
+  main {
+    height: 45rem;
+    margin-top: 15rem;
+    width: 80rem;
+  }
+  .modal--window {
+    top: 5%;
+  }
+  .btn--about {
+    width: max-content;
+    margin-left: 21rem;
+  }
+}
+@media (max-height: 550px) {
+  body > h1 {
+    display: none;
+  }
+  main {
+    height: 40rem;
+    margin-top: 7.5rem;
+    width: 75rem;
+  }
+  .modal--window {
+    top: 1%;
+  }
+  .btn--about {
+    width: max-content;
+    margin-left: 18rem;
+  }
 }
